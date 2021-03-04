@@ -13,13 +13,6 @@ import com.potemkin.timetracking.dao.interfacesdao.UserDAO;
 public abstract class DaoFactory {
 
     /**
-     * List of DAO types supported by the factory
-     */
-    public static final int MYSQL = 1;
-    public static final int ORACLE = 2;
-    public static final int SYBASE = 3;
-
-    /**
      * The concrete factories will have to implement these methods.
      */
     public abstract ActivityDAO getActivityDao();
@@ -32,20 +25,10 @@ public abstract class DaoFactory {
     /**
      * This method return the object of concrete factory
      *
-     * @param whichFactory  - type of factory which will be created.     *
      * @return              - object DAO factory.
      */
-    public static DaoFactory getDaoFactory(int whichFactory) {
-        switch (whichFactory) {
-            case MYSQL:
-                return new MySqlDaoFactory();
-            case ORACLE:
-                //return new OracleDAOFactory();
-            case SYBASE:
-                //return new SybaseDAOFactory();
-            default:
-                return null;
-        }
+    public static DaoFactory getDaoFactory() {
+        return new MySqlDaoFactory();
     }
 }
 

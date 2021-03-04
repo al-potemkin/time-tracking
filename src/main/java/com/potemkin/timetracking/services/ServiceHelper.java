@@ -42,21 +42,21 @@ public class ServiceHelper {
         switch (serviceName) {
             case "activityService": {
                 ActivityService activityService = ActivityService.getInstance();
-                DaoFactory daoFactory = DaoFactory.getDaoFactory(DaoFactory.MYSQL);
+                DaoFactory daoFactory = DaoFactory.getDaoFactory();
                 activityService.setActivityDao(daoFactory.getActivityDao());
                 activityService.setConnectionPool(ConnectionPool.getInstance());
                 break;
             }
             case "trackingService": {
                 TrackingService trackingService = TrackingService.getInstance();
-                DaoFactory daoFactory = DaoFactory.getDaoFactory(DaoFactory.MYSQL);
+                DaoFactory daoFactory = DaoFactory.getDaoFactory();
                 trackingService.setTrackingDao(daoFactory.getTrackingDao());
                 trackingService.setConnectionPool(ConnectionPool.getInstance());
                 break;
             }
             case "userService": {
                 UserService userService = UserService.getInstance();
-                DaoFactory daoFactory = DaoFactory.getDaoFactory(DaoFactory.MYSQL);
+                DaoFactory daoFactory = DaoFactory.getDaoFactory();
                 userService.setUserDao(daoFactory.getUserDao());
                 userService.setConnectionPool(ConnectionPool.getInstance());
                 break;

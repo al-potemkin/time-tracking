@@ -37,10 +37,6 @@ public class Activity extends BaseEntity implements Serializable {
         this.activityName = activityName;
     }
 
-    public List<String> getActivityList() {
-        return activityNameList;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

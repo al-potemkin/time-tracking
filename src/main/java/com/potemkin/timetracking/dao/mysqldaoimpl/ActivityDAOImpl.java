@@ -43,34 +43,6 @@ public class ActivityDAOImpl implements ActivityDAO {
         }
         return instance;
     }
-    /**
-     * This method reads data from <i>activity</i> database table, creates and returns Activity object according to the entered name.
-     *
-     * @param name      - entered <i>login</i>.
-     * @param connection - the current connection to a database. Transmitted from the service module to provide transactions.
-     * @return - User object.
-     */
-    @Override
-    public Activity getByName(String name, Connection connection) throws DAOException {
-        PreparedStatement statement = null;
-        ResultSet resultSet = null;
-        Activity activity = new Activity();
-        try {
-            statement = connection.prepareStatement(QueriesDB.GET_ACTIVITY_BY_NAME);
-            statement.setString(1, name);
-            resultSet = statement.executeQuery();
-            while (resultSet.next()) {
-                createActivity(resultSet, activity);
-            }
-        } catch (SQLException e) {
-            logger.error(MessageConstants.EXECUTE_QUERY_ERROR, e);
-            throw new DAOException(MessageConstants.EXECUTE_QUERY_ERROR, e);
-        } finally {
-            ConnectionPool.closeResultSet(resultSet);
-            ConnectionPool.closeStatement(statement);
-        }
-        return activity;
-    }
 
     /**
      * This method creates and inserts an entity in a database table.
@@ -116,27 +88,6 @@ public class ActivityDAOImpl implements ActivityDAO {
     }
 
     /**
-     * This method deletes an existing record (row) in a database table.
-     *
-     * @param id         - id number of the current entity which will be deleted.
-     * @param connection - the current connection to a database. Transmitted from the service module to provide transactions.
-     */
-    @Override
-    public void deleteById(int id, Connection connection) throws DAOException {
-        PreparedStatement statement = null;
-        try {
-            statement = connection.prepareStatement(QueriesDB.DELETE_ACTIVITY_BY_ID);
-            statement.setInt(1, id);
-            statement.executeUpdate();
-        } catch (SQLException e) {
-            logger.error(MessageConstants.EXECUTE_QUERY_ERROR, e);
-            throw new DAOException(MessageConstants.EXECUTE_QUERY_ERROR, e);
-        } finally {
-            ConnectionPool.closeStatement(statement);
-        }
-    }
-
-    /**
      * This method reads and returns information from a record (row) of a database table.
      *
      * @param id         - id number of the record (row) in the database table..
@@ -144,7 +95,7 @@ public class ActivityDAOImpl implements ActivityDAO {
      * @return - an entity from a database table according to the incoming id number.
      */
     @Override
-    public Activity getById(String  id, Connection connection) throws DAOException {
+    public Activity getById(String id, Connection connection) throws DAOException {
         PreparedStatement statement = null;
         ResultSet resultSet = null;
         Activity activity = new Activity();
@@ -207,11 +158,12 @@ public class ActivityDAOImpl implements ActivityDAO {
         activity.setActivityName(resultSet.getString(Parameters.ACTIVITY_NAME_DB));
         return activity;
     }
+
     /**
      * This method check the uniqueness of the activity name.
      *
-     * @param activityName      - entered <i>login</i>.
-     * @param connection - the current connection to a database. Transmitted from the service module to provide transactions.
+     * @param activityName - entered <i>login</i>.
+     * @param connection   - the current connection to a database. Transmitted from the service module to provide transactions.
      * @return - boolean value of the condition.
      * @throws DAOException
      */
@@ -236,10 +188,11 @@ public class ActivityDAOImpl implements ActivityDAO {
         }
         return isUniqueActivity;
     }
+
     /**
      * This method check the uniqueness of the activity name in overview client list.
      *
-     * @param id - an activity object with fields will be checked.
+     * @param id     - an activity object with fields will be checked.
      * @param userId - a user object with fields will be checked.
      * @return - boolean value of the condition.
      * @throws DAOException

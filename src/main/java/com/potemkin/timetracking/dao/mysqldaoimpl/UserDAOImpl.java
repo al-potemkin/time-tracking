@@ -132,27 +132,6 @@ public class UserDAOImpl implements UserDAO {
     }
 
     /**
-     * This method deletes an existing record (row) in a database table.
-     *
-     * @param id         - id number of the current entity which will be deleted.
-     * @param connection - the current connection to a database. Transmitted from the service module to provide transactions.
-     */
-    @Override
-    public void deleteById(int id, Connection connection) throws DAOException {
-        PreparedStatement statement = null;
-        try {
-            statement = connection.prepareStatement(QueriesDB.DELETE_USER_BY_ID);
-            statement.setInt(1, id);
-            statement.executeUpdate();
-        } catch (SQLException e) {
-            logger.error(MessageConstants.EXECUTE_QUERY_ERROR, e);
-            throw new DAOException(MessageConstants.EXECUTE_QUERY_ERROR, e);
-        } finally {
-            ConnectionPool.closeStatement(statement);
-        }
-    }
-
-    /**
      * This method reads data from <i>users</i> database table, creates and returns User object according to the entered login.
      *
      * @param login      - entered <i>login</i>.

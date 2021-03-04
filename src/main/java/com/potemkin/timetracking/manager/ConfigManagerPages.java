@@ -5,7 +5,7 @@ import com.potemkin.timetracking.constants.ConfigConstant;
 import java.util.ResourceBundle;
 
 /**
- * Description: This class works with pathpages config-property file.
+ * Description: This class works with pathPages config-property file.
  */
 public class ConfigManagerPages {
     private volatile static ConfigManagerPages instance;
@@ -31,7 +31,7 @@ public class ConfigManagerPages {
     }
 
     /**
-     * This method returns path page from pathpages.properties manager files.
+     * This method returns path page from pathPages.properties manager files.
      *
      * @param key   - an incoming key to define a property.
      * @return      - path page.

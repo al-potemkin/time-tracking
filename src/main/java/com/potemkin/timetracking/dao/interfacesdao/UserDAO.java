@@ -35,14 +35,6 @@ public interface UserDAO extends AbstractDAO<User> {
     User getByLogin(String login, Connection connection) throws DAOException;
 
     /**
-     * This method deletes an existing record (row) in a database table.
-     *
-     * @param id            - id number of the current entity which will be deleted.
-     * @param connection    - the current connection to a database. Transmitted from the service module to provide transactions.
-     */
-    void deleteById(int id, Connection connection) throws DAOException;
-
-    /**
      * This method check the uniqueness of the user.
      *
      * @param login         - entered <i>login</i>.

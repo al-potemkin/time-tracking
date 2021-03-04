@@ -5,7 +5,6 @@ import javax.servlet.http.HttpSession;
 
 public class SessionLogic {
     public static boolean flag = true;
-    private static final int timeLive = 30 * 60;
 
     public static HttpSession getSession(HttpServletRequest request) {
         HttpSession session ;

@@ -42,27 +42,6 @@ public class TrackingDAOImpl implements TrackingDAO {
      * @param connection - the current connection to a database. Transmitted from the service module to provide transactions.
      */
     @Override
-    public void deleteTrackingByUserId(int id, Connection connection) throws DAOException {
-        PreparedStatement statement = null;
-        try {
-            statement = connection.prepareStatement(QueriesDB.DELETE_TRACKING_BY_USER_ID);
-            statement.setInt(1, id);
-            statement.executeUpdate();
-        } catch (SQLException e) {
-            logger.error(MessageConstants.EXECUTE_QUERY_ERROR, e);
-            throw new DAOException(MessageConstants.EXECUTE_QUERY_ERROR, e);
-        } finally {
-            ConnectionPool.closeStatement(statement);
-        }
-    }
-
-    /**
-     * This method deletes an existing record (row) in a database table.
-     *
-     * @param id         - id number of the current entity which will be deleted.
-     * @param connection - the current connection to a database. Transmitted from the service module to provide transactions.
-     */
-    @Override
     public void deleteTrackingById(Integer id, Connection connection) throws DAOException {
         PreparedStatement statement = null;
         try {
@@ -164,29 +143,6 @@ public class TrackingDAOImpl implements TrackingDAO {
      * @param connection - the current connection to a database. Transmitted from the service module to provide transactions.
      */
     @Override
-    public void updateTrackingStatusAndTimeByID(Tracking tracking, Connection connection) throws DAOException {
-        PreparedStatement statement = null;
-        try {
-            statement = connection.prepareStatement(QueriesDB.UPDATE_TRACKING_STATUS_AND_TIME_BY_ID);
-            statement.setString(1, tracking.getStatus().toString());
-            statement.setString(2, tracking.getElapsedTime());
-            statement.setString(3, tracking.getTrackingId().toString());
-            statement.executeUpdate();
-        } catch (SQLException e) {
-            logger.error(MessageConstants.EXECUTE_QUERY_ERROR, e);
-            throw new DAOException(MessageConstants.EXECUTE_QUERY_ERROR, e);
-        } finally {
-            ConnectionPool.closeStatement(statement);
-        }
-    }
-
-    /**
-     * This method updates an existing record (row) in a database table.
-     *
-     * @param tracking   - the current entity of user which will be updated.
-     * @param connection - the current connection to a database. Transmitted from the service module to provide transactions.
-     */
-    @Override
     public void updateTrackingById(String id, Tracking tracking, Connection connection) throws DAOException {
         PreparedStatement statement = null;
         try {
@@ -236,28 +192,6 @@ public class TrackingDAOImpl implements TrackingDAO {
             throw new DAOException(MessageConstants.EXECUTE_QUERY_ERROR, e);
         } catch (NullPointerException e) {
             logger.error(MessageConstants.NULLPOINTEREXEPTIONS, e);
-        } finally {
-            ConnectionPool.closeStatement(statement);
-        }
-    }
-
-    /**
-     * This method updates an existing record (row) in a database table.
-     *
-     * @param tracking   - the current entity of user which will be updated.
-     * @param connection - the current connection to a database. Transmitted from the service module to provide transactions.
-     */
-    @Override
-    public void updateTrackingStatusByID(Tracking tracking, Connection connection) throws DAOException {
-        PreparedStatement statement = null;
-        try {
-            statement = connection.prepareStatement(QueriesDB.UPDATE_TRACKING_STATUS_BY_ID);
-            statement.setString(1, tracking.getStatus().toString());
-            statement.setString(3, tracking.getTrackingId().toString());
-            statement.executeUpdate();
-        } catch (SQLException e) {
-            logger.error(MessageConstants.EXECUTE_QUERY_ERROR, e);
-            throw new DAOException(MessageConstants.EXECUTE_QUERY_ERROR, e);
         } finally {
             ConnectionPool.closeStatement(statement);
         }
@@ -408,28 +342,4 @@ public class TrackingDAOImpl implements TrackingDAO {
         return statusId;
     }
 
-    /**
-     * This method updates an existing record (row) in a database table.
-     *
-     * @param id         - the id number of tracking which will be updated.
-     * @param status     - the status of tracking which will be updated.
-     * @param time       - the time of tracking which will be updated.
-     * @param connection - the current connection to a database. Transmitted from the service module to provide transactions.
-     */
-    public void setStatusAndTime(String id, String status, String time, Connection connection) throws DAOException {
-        PreparedStatement statement = null;
-        Integer statusId = defineStatus(status);
-        try {
-            statement = connection.prepareStatement(QueriesDB.UPDATE_TRACKING_STATUS_AND_TIME_BY_ID);
-            statement.setInt(1, statusId);// status_id
-            statement.setString(2, time);// time
-            statement.setString(3, id);// tracking_id
-            statement.executeUpdate();
-        } catch (SQLException e) {
-            logger.error(MessageConstants.EXECUTE_QUERY_ERROR, e);
-            throw new DAOException(MessageConstants.EXECUTE_QUERY_ERROR, e);
-        } finally {
-            ConnectionPool.closeStatement(statement);
-        }
-    }
 }

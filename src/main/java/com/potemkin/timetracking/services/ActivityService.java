@@ -73,18 +73,6 @@ public class ActivityService {
     }
 
     /**
-     * This method updates user object. This method implements work with transaction support.
-     *
-     * @param activity - an user which fields will be updated.
-     * @throws SQLException
-     */
-    public void updateActivity(Activity activity) throws SQLException {
-        TransactionHandler.runInTransaction(connection ->
-                activityDao.update(activity, connection),connectionPool.getConnection()
-        );
-    }
-
-    /**
      * This method receives all activities from database. This method implements work with transaction support.
      *
      * @return - a list of activities from the database.

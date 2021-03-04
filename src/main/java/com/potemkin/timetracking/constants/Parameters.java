@@ -23,7 +23,6 @@ public class Parameters {
     public static final String ACTIVITY_NAME = "activityName";
     public static final String USER_TYPE_ID = "userTypeId";
     public static final String ACTIVITY_ID = "activityId";
-    public static final String USER_STATUS_ID = "userStatusId";
     public static final String COMMAND = "command";
     public static final String LOGIN = "login";
     public static final String LASTPAGE = "lastPage";
