@@ -1,0 +1,166 @@
+body {
+    margin: 0px;
+    padding: 0px;
+    display: inline-block;
+    background: url("/images/sky.jpg") no-repeat center center fixed;
+    background-size: cover;
+}
+
+fieldset {
+    padding-bottom: 5px;
+    padding-right: 5px;
+    padding-left: 5px;
+}
+
+.wrapperWelcomeInfo {
+    position: absolute;
+    left: 10px;
+    top: 5px;
+}
+
+.welcomeElement {
+    font-size: 18px;
+}
+
+.wrapperPageData {
+    position: absolute;
+    left: 20px;
+    top: 50px;
+}
+
+.wrapperTableActivity {
+    position: absolute;
+    left: 850px;
+    top: 0px;
+}
+
+.wrapperTableActivityAdmin {
+    position: absolute;
+    left: 870px;
+    top: 0px;
+}
+
+.wrapperUserData {
+    position: absolute;
+    left: 20px;
+    top: 50px;
+}
+
+.buttonElement {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.messageElement {
+    color: firebrick;
+    font-weight: 600;
+}
+
+.inputElement {
+    opacity: 0.7;
+}
+
+.userTypeElement {
+    position: fixed;
+    left: 10px;
+    bottom: 5px;
+    color: firebrick;
+}
+
+.logoutElement {
+    position: fixed;
+    right: 250px;
+    top: 12px;
+}
+
+.languageElement {
+    position: fixed;
+    right: 20px;
+    top: 10px;
+    margin: 0px;
+    padding: 0px;
+    display: inline-block;
+}
+
+.backElement {
+    position: fixed;
+    right: 330px;
+    top: 12px;
+}
+
+.activityInfoForm {
+    background-color: whitesmoke;
+    opacity: 0.75;
+}
+
+.wrapperButtons {
+    position: relative;
+    display: flex;
+    justify-content: flex-end;
+    text-align: justify;
+    text-align-last: justify;
+}
+
+.buttonElement {
+    display: inline-block;
+    height: 20px;
+    width: 70px
+}
+
+.formElement {
+    margin: 0;
+    text-align: center
+}
+
+.operationMessageElement {
+    position: fixed;
+    left: 10px;
+    bottom: 5px;
+    color: firebrick;
+}
+
+.mockButton {
+    height: 22px;
+    width: 140px;
+    border: 1px solid black;
+    color: white;
+    padding: 0;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 12px;
+    margin-right: 10px;
+    /*cursor: none;*/
+}
+
+.red {
+    background-color: #f44336;
+}
+
+.blue {
+    background-color: #008CBA;
+}
+
+.pagination {
+    display: inline-block;
+}
+
+.pagination a {
+    color: black;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+    transition: background-color .3s;
+    border: 1px solid #ddd;
+    margin: 0 4px;
+}
+
+.pagination a.active {
+    background-color: #008CBA;
+    color: white;
+    border: 1px solid #4CAF50;
+}
+
+.pagination a:hover:not(.active) {
+    background-color: #ddd;
+}

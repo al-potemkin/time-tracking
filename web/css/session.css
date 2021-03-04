@@ -1,0 +1,33 @@
+body {
+    margin: 0px;
+    padding: 0px;
+    display: inline-block;
+    background: url("/images/bg_menu.jpg") no-repeat center center fixed;
+    background-size: cover;
+}
+.wrapperButtons {
+    display: flex;
+    justify-content: space-between;
+    text-align: justify;
+    text-align-last: justify;
+}
+.buttonElement {
+    display: inline-block;
+}
+.inputElement {
+    opacity: 0.7;
+}
+.sessionForm {
+    position: absolute;
+    left: 40%; top: 22%;
+}
+.operationMessageElement {
+    position: fixed;
+    left: 10px; bottom: 5px;
+    color: firebrick;
+}
+.registrationPageMessage {
+    position: fixed;
+    left: 10px; bottom: 5px;
+    color: firebrick;
+}
